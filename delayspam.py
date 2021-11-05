@@ -20,13 +20,10 @@ import os
 from telethon import events
 from telethon import functions, types
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
-from .. import *
-SMEX_USERS = []
-for x in SUDO_USERS:
-    SMEX_USERS.append(x)
+from . import *
 @bot.on(events.NewMessage(pattern="/delayspam"))
 async def spam(e):    
-    if e.sender_id in SMEX_USERS:
+    if spam == "ON":
         if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
             return await e.reply(usage, parse_mode=None, link_preview=None)
         smex = await e.get_reply_message()
